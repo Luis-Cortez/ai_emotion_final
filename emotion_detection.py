@@ -18,14 +18,29 @@ natural_language_understanding = NaturalLanguageUnderstandingV1(
 
 natural_language_understanding.set_service_url( SERVICE_URL )
 
+def dominant_emotion( emotions:list ) -> str:
+    ratings = []
+    for emotion in emotions:
+        n = emotions[emotion]
+        ratings.append( n )
+    for emotion in emotions:
+        if emotions[emotion] == max( ratings ):
+            return emotion
+
 def emotion_detector( text_to_analyse ):
     response = natural_language_understanding.analyze(
         text = text_to_analyse,
         features  = Features( emotion = EmotionOptions())
     ).get_result()
 
-    return json.dumps( response['emotion']['document'], indent = 2)
-   
-text = emotion_detector("I love this new technology")
+    emotions = response['emotion']['document']['emotion']
+    dom_emotion = dominant_emotion( emotions )
+    emotions["dominant_emotion"] = dom_emotion 
 
-print( text )
+    return json.dumps( emotions, indent = 2 )
+
+print( emotion_detector("I love this technology") )
+   
+
+
+
