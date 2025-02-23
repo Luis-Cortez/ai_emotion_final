@@ -18,7 +18,7 @@ natural_language_understanding = NaturalLanguageUnderstandingV1(
 
 natural_language_understanding.set_service_url( SERVICE_URL )
 
-def dominant_emotion( emotions:list ) -> str:
+def dominant_emotion( emotions:dict ) -> str:
     ratings = []
     for emotion in emotions:
         n = emotions[emotion]
