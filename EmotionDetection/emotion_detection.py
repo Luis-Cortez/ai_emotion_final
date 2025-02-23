@@ -7,6 +7,14 @@ import json
 # https://cloud.ibm.com/apidocs/natural-language-understanding?code=python#data-handling
 load_dotenv()
 
+fake_emotions = {
+    "joy": None,
+    "sadness": None,
+    "anger": None,
+    "fear": None,
+    "dominant_emotion": None
+}
+
 API_KEY = os.getenv("API_KEY")
 SERVICE_URL = os.getenv("SERVICE_URL")
 
@@ -40,9 +48,10 @@ def emotion_detector( text_to_analyze ):
         emotions["dominant_emotion"] = dom_emotion 
 
         return emotions
-    except TypeError:
-       print(TypeError)
-       return "Whoops try again"
+    except Exception:
+        return fake_emotions
+
+    
     
 
 
