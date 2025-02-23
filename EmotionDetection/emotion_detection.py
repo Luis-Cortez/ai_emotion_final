@@ -37,7 +37,7 @@ def emotion_detector( text_to_analyse ):
     dom_emotion = dominant_emotion( emotions )
     emotions["dominant_emotion"] = dom_emotion 
 
-    return json.dumps( emotions, indent = 2 )
+    return emotions
 
 
    
