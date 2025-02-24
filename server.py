@@ -11,7 +11,7 @@ def index() -> str:
 
 @app.route("/emotionDetector", methods = ['GET'])
 def emotion_detect() -> dict:
-    """ Analazing emotions"""
+    """ Analyzing emotions"""
     text_to_analyze = request.args.get('textToAnalyze')
     emotions = emotion_detector(text_to_analyze)
     if emotions["dominant_emotion"] is None:
