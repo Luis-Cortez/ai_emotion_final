@@ -7,7 +7,7 @@ import json
 # https://cloud.ibm.com/apidocs/natural-language-understanding?code=python#data-handling
 load_dotenv()
 
-fake_emotions = {
+none_emotions = {
     "joy": None,
     "sadness": None,
     "anger": None,
@@ -49,7 +49,7 @@ def emotion_detector( text_to_analyze ):
 
         return emotions
     except Exception:
-        return fake_emotions
+        return none_emotions
 
     
     
